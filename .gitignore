@@ -2,3 +2,4 @@
 aoc18.cabal
 .vscode
 *~
+.DS_Store
