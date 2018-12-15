@@ -1,6 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 
-module Days.Day3 where
+module Days.Day3(run) where
 
 import Control.Lens 
 import Text.Parsec

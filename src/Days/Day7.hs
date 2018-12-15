@@ -1,4 +1,4 @@
-module Days.Day7 where
+module Days.Day7(run) where
 
 import Data.Char
 
