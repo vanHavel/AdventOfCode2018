@@ -1,4 +1,4 @@
-module Days.Day18 where
+module Days.Day18(run) where
 
 import Data.Array
 import qualified Data.Map as Map
