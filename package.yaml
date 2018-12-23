@@ -25,6 +25,7 @@ dependencies:
 - lens
 - parsec
 - array
+- mtl
 
 library:
   source-dirs: src
