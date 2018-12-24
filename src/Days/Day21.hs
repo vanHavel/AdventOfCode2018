@@ -1,4 +1,4 @@
-module Days.Day21 where
+module Days.Day21(run) where
 
 import Data.Array
 import qualified Data.Map.Strict as Map
