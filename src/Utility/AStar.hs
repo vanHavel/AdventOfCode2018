@@ -44,7 +44,7 @@ runAStar h succFun goal open closed =
                 let newClosed = Set.insert next closed
                 -- add successors to open list
                     successors = [(s, i) | (s, i) <- Set.elems (succFun next), not $ Set.member s closed]
-                    newOpen = foldl (\open new -> insert (newNode new) open) (deleteMin open) successors
+                    newOpen = foldl (\op new -> insert (newNode new) op) (deleteMin open) successors
                     newNode (newS, cost) = Node {getF = fNew (newS, cost), getC = c + cost, getVal = newS}
                     -- f value for successors, with path max correction
                     fNew (newS, cost) = maximum[c + cost + (h newS), f]

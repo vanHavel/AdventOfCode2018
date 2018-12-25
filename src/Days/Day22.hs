@@ -54,10 +54,10 @@ manhattanHeuristic :: Position -> CaveState -> Int
 manhattanHeuristic (!ty, !tx) CaveState{pos=(!y, !x)} = abs (y - ty) + abs (x - tx)
 
 succFun :: Array Position Int -> CaveState -> Set (CaveState, Int)
-succFun grid CaveState{pos=thePos, tool=theTool} = 
+succFun !grid CaveState{pos=thePos, tool=theTool} = 
     let succPoss = getSuccPoss thePos 
         moveStates = zip [CaveState{pos=newPos, tool=theTool} | newPos <- succPoss, possible grid newPos theTool] (repeat 1)
-        toolStates = zip [CaveState{pos=thePos, tool=aTool} | aTool <- allTools, aTool /= theTool] (repeat 7)
+        toolStates = [(CaveState{pos=thePos, tool=otherTool theTool (grid ! thePos)}, 7)]
       in Set.fromList $ moveStates ++ toolStates
 
 getSuccPoss :: Position -> [Position]
@@ -71,3 +71,11 @@ possible grid pos tool = case grid ! pos of
     0 -> tool /= Neither
     1 -> tool /= Torch
     2 -> tool /= ClimbingGear
+
+otherTool :: Tool -> Int -> Tool
+otherTool ClimbingGear 0 = Torch 
+otherTool Torch 0 = ClimbingGear 
+otherTool ClimbingGear 1 = Neither
+otherTool Neither 1 = ClimbingGear 
+otherTool Torch 2 = Neither
+otherTool Neither 2 = Torch
