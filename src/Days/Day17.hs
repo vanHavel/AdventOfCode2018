@@ -1,4 +1,4 @@
-module Days.Day17 where
+module Days.Day17(run) where
 
 import qualified Data.Set as Set 
 import Data.Set (Set)
@@ -37,13 +37,13 @@ fillFromPosition grid pos = do
         then return () 
         else do 
             mLowPos <- falldown grid pos
-            trace ("lowPos: " ++ show mLowPos) $ case mLowPos of
+            case mLowPos of
                 Nothing -> return ()
                 Just lowPos -> do 
                     highPos <- fillPool grid lowPos
-                    mLeftPos <- trace ("highPos: " ++ show highPos) $ branchLeft grid highPos 
+                    mLeftPos <- branchLeft grid highPos 
                     mRightPos <- branchRight grid highPos 
-                    trace ("left, right: " ++ show (mLeftPos, mRightPos)) $ case (mLeftPos, mRightPos) of 
+                    case (mLeftPos, mRightPos) of 
                         (Nothing, Just rightPos) -> fillFromPosition grid rightPos
                         (Just leftPos, Nothing) -> fillFromPosition grid leftPos 
                         (Just leftPos, Just rightPos) -> do 

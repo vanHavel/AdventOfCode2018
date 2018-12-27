@@ -1,4 +1,4 @@
-module Days.Day11 where
+module Days.Day11(run) where
 
 import Data.Map.Lazy (Map, (!))
 import qualified Data.Map.Lazy as Map

@@ -1,4 +1,4 @@
-module Days.Day23 where 
+module Days.Day23(run) where 
 
 import Data.List.Split
 import Data.Ord

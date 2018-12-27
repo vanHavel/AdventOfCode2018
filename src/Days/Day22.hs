@@ -1,6 +1,6 @@
 {-# LANGUAGE BangPatterns #-}
-module Days.Day22 where
---1081, 1083 too low, 1200 too high
+module Days.Day22(run) where
+
 import Control.Monad.State
 import Data.Array
 import qualified Data.Set as Set
