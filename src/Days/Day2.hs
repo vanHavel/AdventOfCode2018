@@ -13,7 +13,7 @@ checksum hashes =
             (length twiceHashes) * (length thriceHashes)
 
 anyOccursTimes :: Int -> String -> Bool
-anyOccursTimes times = any (== times) . occurCounts
+anyOccursTimes times = elem times . occurCounts
     where occurCounts = (map length) . group . sort
 
 solution :: [String] -> String
@@ -23,4 +23,4 @@ equalChars :: String -> String -> String
 equalChars s t = [a | (a, b) <- zip s t, a == b]
 
 countDifferences :: String -> String -> Int
-countDifferences s t = length [a | (a, b) <- zip s t, not (a == b)]
+countDifferences s t = length [a | (a, b) <- zip s t, a /= b]
